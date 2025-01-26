@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eef;
+            border-left: 5px solid #007BFF;
+            border-radius: 4px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Classes in JavaScript</h1>
+        <p>This is an example of using classes, static methods, and inheritance in JavaScript.</p>
+        <div class="result" id="result">
+        </div>
+    </div>
+
+    <script>
+        class Vehicle {
+            constructor(name, speed) {
+                this.name = name;
+                this.speed = speed;
+            }
+
+            displayDetails() {
+                return `${this.name} runs at a speed of ${this.speed} km/h.`;
+            }
+
+            static companyInfo() {
+                return "This vehicle is manufactured by XYZ Motors.";
+            }
+        }
+
+        class Car extends Vehicle {
+            constructor(name, speed, fuelType) {
+                super(name, speed);
+                this.fuelType = fuelType;
+            }
+
+            displayDetails() {
+                return `${super.displayDetails()} It uses ${this.fuelType} fuel.`;
+            }
+        }
+
+        const myCar = new Car("Toyota Corolla", 180, "Petrol");
+
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = `
+      <p>${myCar.displayDetails()}</p>
+      <p>${Car.companyInfo()}</p>
+    `;
+    </script>
+</body>
+
+</html>
